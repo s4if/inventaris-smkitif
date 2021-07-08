@@ -1,0 +1,13 @@
+Halaman Aplikasi:
+- Login
+- Tampil/Edit barang
+- Tampil/Edit siswa
+- Tampil/Edit guru (user)
+- Tampil/Edit peminjaman
+
+Status ketersediaan dari hitung stok - barang dipinjam
+Privileges:
+- Admin -> All
+- User -> Tampil, edit peminjaman
+
+- Tambah Filter CekAdmin, redirect gagal ke laman pinjam
