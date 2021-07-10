@@ -7,6 +7,7 @@
 
     <!-- Bootstrap core CSS -->
 	<link href="<?=base_url();?>/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?=base_url();?>/css/bootstrap-select.min.css" rel="stylesheet">
     <style>
 
       .bd-placeholder-img {
@@ -89,35 +90,96 @@
   </div>
 
 </main><!-- /.container -->
+
+<!-- Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="formEdit">
+          <div class="form-group">
+            <label>Siswa</label>
+            <select class="form-control selectpicker">
+              <option>[nama] - [kelas]</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Barang</label>
+            <select class="form-control selectpicker">
+              <option>[kode] - [nama]</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Tanggal Pinjam</label>
+              <input type="date" class="form-control" name="tanggal_pinjam" value="<?=$hari_ini?>">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Jam Pinjam</label>
+              <input type="time" class="form-control" name="jam_pinjam">
+            </div>
+          </div>      
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Tanggal Kembali</label>
+              <input type="date" class="form-control" name="tanggal_kembali" value="<?=$hari_ini?>">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Jam Kembali</label>
+              <input type="time" class="form-control" name="jam_kembali">
+            </div>
+          </div> 
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Simpan</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-danger">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
       	
     <script src="<?=base_url();?>/js/jquery.min.js"></script>  
     <script src="<?=base_url();?>/js/bootstrap.bundle.min.js"></script>  
     <script src="<?=base_url();?>/js/datatables.min.js"></script>
+    <script src="<?=base_url();?>/js/bootstrap-select.min.js"></script>
     <script type="text/javascript">
 $(document).ready(function() {
-    var tabel = $('#tabel_utama').DataTable({
-    	"scrollX": true,
+  $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+  var tabel = $('#tabel_utama').DataTable({
+  	"scrollX": true,
 
-        // Load data for the table's content from an Ajax source
-        "ajax": {
-            "url": '<?=base_url()?>/api/load_peminjaman',
-            "type": "GET"
-        },
-        "columns": [
-            { "data": "id_pinjam" },
-            { "data": "nama_barang" },
-            { "data": "kode_barang" },
-            { "data": "nama_peminjam" },
-            { "data": "kelas" },
-            { "data": "waktu_pinjam" },
-            { "data": "waktu_kembali" },
-            { "data": "status_pinjam" },
-            { "data": "nama_pengawas" },
-            { "data": "aksi" }
-        ]
-    });
+      // Load data for the table's content from an Ajax source
+      "ajax": {
+          "url": '<?=base_url()?>/api/load_peminjaman',
+          "type": "GET"
+      },
+      "columns": [
+          { "data": "id_pinjam" },
+          { "data": "nama_barang" },
+          { "data": "kode_barang" },
+          { "data": "nama_peminjam" },
+          { "data": "kelas" },
+          { "data": "waktu_pinjam" },
+          { "data": "waktu_kembali" },
+          { "data": "status_pinjam" },
+          { "data": "nama_pengawas" },
+          { "data": "aksi" }
+      ]
+  });
 
 });
+
+function tampilEdit($id) {
+  $('#editModal').modal('show');
+}
     </script>
   </body>
 </html>

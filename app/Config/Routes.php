@@ -44,6 +44,7 @@ $routes->get('/coba_akses', 'Peminjaman::coba');
 $routes->group('/api', function($routes)
 {
     $routes->get('load_peminjaman', 'Peminjaman::loadData');
+    $routes->get('load_id_pinjam/(:num)', 'Peminjaman::loadSingleData/$1');
 });
 
 /*

@@ -11,3 +11,5 @@ Privileges:
 - User -> Tampil, edit peminjaman
 
 - Tambah Filter CekAdmin, redirect gagal ke laman pinjam
+
+- Hapus peminjaman harus masukkan password

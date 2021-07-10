@@ -9,8 +9,8 @@ class PeminjamanSeeder extends Seeder
 {
 	public function run()
 	{
-		$waktu_pinjam = new Time('-2 hour');
-		$waktu_kembali = new Time('now');
+		$waktu_pinjam = new Time('-2 hour', 'Asia/Jakarta');
+		$waktu_kembali = new Time('now', 'Asia/Jakarta');
 		$data = [
             'waktu_pinjam' => $waktu_pinjam->toDateTimeString(),
             'waktu_kembali' => $waktu_kembali->toDateTimeString(),
@@ -21,7 +21,7 @@ class PeminjamanSeeder extends Seeder
         ];
         $this->db->table('peminjaman')->insert($data);
 
-		$waktu_pinjam = new Time('-1 hour');
+		$waktu_pinjam = new Time('-1 hour', 'Asia/Jakarta');
 		$data = [
             'waktu_pinjam' => $waktu_pinjam->toDateTimeString(),
             'status_pinjam' => 'masih dipinjam',

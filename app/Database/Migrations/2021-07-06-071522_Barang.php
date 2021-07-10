@@ -26,10 +26,10 @@ class Barang extends Migration
                 'constraint' => ['baik', 'rusak', 'dalam perbaikan', 'rusak ringan'],
                 'default'    => 'baik',
         	],
-        	'jml_barang'          => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'unsigned'   => false,
+        	'kategori'          => [
+                'type'       => 'VARCHAR',
+                'constraint' => 60,
+                'null'       => false,
         	],
             'tempat_penyimpanan'       => [
                 'type'       => 'TEXT',
